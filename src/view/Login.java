@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -40,6 +42,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setText("Login:");
 
+        txtLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLoginActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Senha:");
 
         btnCancelar.setText("Cancelar");
@@ -50,6 +58,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         btnCadastro.setText("Cadastre-se");
         btnCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +150,20 @@ public class Login extends javax.swing.JFrame {
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastroActionPerformed
+
+    private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLoginActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        // TODO add your handling code here:
+        String login = this.txtLogin.getText();
+        char[] senha = this.txtSenha.getPassword();
+        String senhaString = String.valueOf(senha);
+        if (login.equals("Admin") && senhaString.equals("1234")){
+            JOptionPane.showMessageDialog(null,"Entrou");
+        }
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
      * @param args the command line arguments

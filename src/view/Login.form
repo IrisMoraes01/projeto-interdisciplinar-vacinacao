@@ -115,6 +115,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtLogin">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLoginActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -135,6 +138,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Entrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEntrarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastro">
           <Properties>
