@@ -7,7 +7,6 @@ package model;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Consulta {
@@ -15,9 +14,9 @@ public class Consulta {
     private Enfermeira enfermeira;
     private Paciente paciente;
     private final List<Vacina> vacina = new ArrayList<>();
-    private Date data;
+    private Data data;
 
-    public Consulta(Medico medico, Enfermeira enfermeira, Paciente paciente, Date data) {
+    public Consulta(Medico medico, Enfermeira enfermeira, Paciente paciente, Data data) {
         this.medico = medico;
         this.enfermeira = enfermeira;
         this.paciente = paciente;
@@ -48,11 +47,11 @@ public class Consulta {
         this.paciente = paciente;
     }
 
-    public Date getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(Data data) {
         this.data = data;
     }
     

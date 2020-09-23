@@ -9,7 +9,7 @@ package model;
 public class Enfermeira extends Pessoa{
     private int coren;
 
-    public Enfermeira(int coren, String nome, int idade, int cpf, String email, String login, String senha, Endereco endereco) {
+    public Enfermeira(int coren, String nome, int idade, long cpf, String email, String login, String senha, Endereco endereco) {
         super(nome, idade, cpf, email, login, senha, endereco);
         this.coren = coren;
     }

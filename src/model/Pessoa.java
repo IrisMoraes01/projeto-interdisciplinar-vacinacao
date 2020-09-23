@@ -8,13 +8,13 @@ package model;
 abstract class Pessoa {
     private String nome;
     private int idade;
-    private int cpf;
+    private long cpf;
     private String email;
     private String login;
     private String senha;
     private Endereco endereco;
 
-    public Pessoa(String nome, int idade, int cpf, String email, String login, String senha, Endereco endereco) {
+    public Pessoa(String nome, int idade, long cpf, String email, String login, String senha, Endereco endereco) {
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
@@ -40,11 +40,11 @@ abstract class Pessoa {
         this.idade = idade;
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 

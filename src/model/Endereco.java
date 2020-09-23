@@ -10,14 +10,16 @@ public class Endereco {
    
     private String logradouro;
     private int numero;
+    private String nomeRua;
     private String bairro;
     private String cidade;
     private String estado;
     private String cep;
 
-    public Endereco(String logradouro, int numero, String bairro, String cidade, String estado, String cep) {
+    public Endereco(String logradouro, int numero,String nomeRua, String bairro, String cidade, String estado, String cep) {
         this.logradouro = logradouro;
         this.numero = numero;
+        this.nomeRua = nomeRua;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
