@@ -184,11 +184,17 @@ public class Login extends javax.swing.JFrame {
         String senha = String.valueOf(txtSenha.getPassword());
         
         if(rbPaciente.isSelected()){
-            JOptionPane.showMessageDialog(null, "Paciente");
+            if(verificarLogin.fazerLoginPaciente(login, senha)){
+                new TelaPrincipalPaciente().show();
+            }
         }else if(rbMedico.isSelected()){
-            JOptionPane.showMessageDialog(null, "Médico");
+            if(verificarLogin.fazerLoginMedico(login,senha)){
+                new TelaPrincipalMedico().show();
+            }
         }else if(rbEnfermeira.isSelected()){
-            JOptionPane.showMessageDialog(null, "Enfermeira");
+            if(verificarLogin.fazerLoginEnfermeira(login,senha)){
+                new TelaPrincipalEnfermeira().show();
+            }
         }else{
             if(verificarLogin.fazerLoginAdmin(login, senha)){  
                 new TelaPrincipalAdmin().show();

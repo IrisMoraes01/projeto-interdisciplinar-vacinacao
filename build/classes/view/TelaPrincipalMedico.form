@@ -47,69 +47,41 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnConsultaEnfermeira" max="32767" attributes="0"/>
-                      <Component id="btnConsultaMedico" max="32767" attributes="0"/>
-                      <Component id="btnConsultaPaciente" max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="btnConsultas" min="-2" pref="139" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnAdicionaEnfermeira" pref="133" max="32767" attributes="0"/>
-                      <Component id="btnAdicionaMedico" max="32767" attributes="0"/>
-                      <Component id="btnSair" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnSair" max="32767" attributes="0"/>
+                      <Component id="btnHistoricoConsultas" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnConsultaEnfermeira" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="btnAdicionaEnfermeira" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnConsultas" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnHistoricoConsultas" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnConsultaMedico" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="btnAdicionaMedico" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btnConsultaPaciente" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="btnSair" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <Component id="btnSair" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnConsultaEnfermeira">
+        <Component class="javax.swing.JButton" name="btnConsultas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Consultar Enfermeira"/>
+            <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnConsultaMedico">
+        <Component class="javax.swing.JButton" name="btnHistoricoConsultas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Consultar M&#xe9;dico"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnConsultaPaciente">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Consultar Pacientes"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnAdicionaEnfermeira">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Adicionar Enfermeira"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnAdicionaMedico">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Adicionar M&#xe9;dico"/>
+            <Property name="text" type="java.lang.String" value="Hist&#xf3;rico de Consultas"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnSair">
