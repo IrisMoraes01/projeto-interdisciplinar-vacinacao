@@ -30,7 +30,7 @@ public class ArmazenaPaciente {
     }
     public static Paciente getPacientePorCartaoDoSus(int cartaoDoSus){
         return pacientes.stream()
-                .filter(medico -> medico.getCartaoDoSus()==cartaoDoSus)
+                .filter(paciente -> paciente.getCartaoDoSus()==cartaoDoSus)
                 .findFirst()
                 .get();
     }

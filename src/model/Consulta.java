@@ -22,7 +22,6 @@ public class Consulta {
         this.paciente = paciente;
         this.data = data;
     }
-
     public Medico getMedico() {
         return medico;
     }
