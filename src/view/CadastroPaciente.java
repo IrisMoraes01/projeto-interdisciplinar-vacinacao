@@ -156,6 +156,11 @@ public class CadastroPaciente extends javax.swing.JFrame {
         });
 
         btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         btnConfirmar.setText("Confirmar Cadastro");
 
@@ -311,7 +316,7 @@ public class CadastroPaciente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(20, Short.MAX_VALUE))
+                        .addContainerGap(22, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLimpar)
@@ -344,8 +349,27 @@ public class CadastroPaciente extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        CadastroPaciente.this.dispose();
+        new Login().show();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        // TODO add your handling code here:
+        txtAno.setText(null);
+        txtBairro.setText(null);
+        txtCartaoSus.setText(null);
+        txtCep.setText(null);
+        txtCidade.setText(null);
+        txtCpf.setText(null);
+        txtDia.setText(null);
+        txtEmail.setText(null);
+        txtEstado.setText(null);
+        txtLogradouro.setText(null);
+        txtMes.setText(null);
+        txtNome.setText(null);
+        txtNomeRua.setText(null);
+        txtNumero.setText(null);
+    }//GEN-LAST:event_btnLimparActionPerformed
 
     /**
      * @param args the command line arguments

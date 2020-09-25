@@ -5,8 +5,6 @@
  */
 package view;
 
-import java.util.Arrays;
-import javax.swing.JOptionPane;
 import service.VerificarLogin;
 public class Login extends javax.swing.JFrame {
 
@@ -171,6 +169,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         // TODO add your handling code here:
+        Login.this.dispose();
         new CadastroPaciente().show();
     }//GEN-LAST:event_btnCadastroActionPerformed
 
@@ -185,18 +184,22 @@ public class Login extends javax.swing.JFrame {
         
         if(rbPaciente.isSelected()){
             if(verificarLogin.fazerLoginPaciente(login, senha)){
+                Login.this.dispose();
                 new TelaPrincipalPaciente().show();
             }
         }else if(rbMedico.isSelected()){
             if(verificarLogin.fazerLoginMedico(login,senha)){
+                Login.this.dispose();
                 new TelaPrincipalMedico().show();
             }
         }else if(rbEnfermeira.isSelected()){
             if(verificarLogin.fazerLoginEnfermeira(login,senha)){
-                new TelaPrincipalEnfermeira().show();
+                Login.this.dispose();
+                new TelaPrincipalEnfermeira().show();  
             }
         }else{
-            if(verificarLogin.fazerLoginAdmin(login, senha)){  
+            if(verificarLogin.fazerLoginAdmin(login, senha)){ 
+                Login.this.dispose();
                 new TelaPrincipalAdmin().show();
             }
         }

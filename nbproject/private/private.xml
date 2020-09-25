@@ -5,10 +5,10 @@
         <group>
             <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/view/TelaPrincipalEnfermeira.java</file>
             <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/view/Login.java</file>
-            <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/service/VerificarLogin.java</file>
             <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/view/TelaPrincipalAdmin.java</file>
+            <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/view/AdicionarEnfermeiraAdmin.java</file>
             <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/view/TelaPrincipalPaciente.java</file>
-            <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/repository/ArmazenaConsulta.java</file>
+            <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/view/CadastroPaciente.java</file>
             <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/view/TelaPrincipalMedico.java</file>
             <file>file:/D:/ProjetoInterdisciplinar/ProjetoVacina/src/view/AgendarConsultaPaciente.java</file>
         </group>
