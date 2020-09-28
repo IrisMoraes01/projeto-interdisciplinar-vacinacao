@@ -8,6 +8,7 @@ package view;
 import repository.ArmazenaMedico;
 
 import javax.swing.*;
+import repository.ArmazenaEnfermeira;
 
 /**
  *
@@ -20,8 +21,10 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
      */
     public AgendarConsultaPaciente() {
         initComponents();
+        ArmazenaEnfermeira.getEnfermeiras()
+                .forEach(enfermeira -> this.cbEnfermeira.addItem(enfermeira.getNome()+" "+enfermeira.getCoren()));
         ArmazenaMedico.getMedicos()
-                .forEach(medico -> this.cbMedico.addItem(medico.getNome()));
+                .forEach(medico -> this.cbMedico.addItem(medico.getNome()+" "+medico.getCrm()));
     }
 
     /**
@@ -34,7 +37,6 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtDia = new javax.swing.JTextField();
@@ -46,26 +48,28 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         cbMedico = new javax.swing.JComboBox<>();
         cbEnfermeira = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Médico:");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Marcar consulta: ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         jLabel2.setText("Enfermeira: ");
 
         jLabel3.setText("Data: ");
 
-        txtDia.setText("dd");
-
         jLabel4.setText("/");
-
-        txtMes.setText("mm");
 
         jLabel5.setText("/");
 
-        txtAno.setText("aaaa");
-
         btnConfirmaConsulta.setText("Confirmar Consulta");
+        btnConfirmaConsulta.setMaximumSize(new java.awt.Dimension(75, 26));
+        btnConfirmaConsulta.setMinimumSize(new java.awt.Dimension(75, 26));
+        btnConfirmaConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmaConsultaActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,14 +78,21 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
             }
         });
 
-        cbMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< Selecione o médico: >", " ", " ", " " }));
+        cbMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< Selecione o médico: >" }));
         cbMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbMedicoActionPerformed(evt);
             }
         });
 
-        cbEnfermeira.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione a enfermeira:" }));
+        cbEnfermeira.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< Selecione a enfermeira: >" }));
+        cbEnfermeira.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbEnfermeiraActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Médico:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,30 +101,29 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnConfirmaConsulta)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(cbEnfermeira, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cbMedico, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel5)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 38, Short.MAX_VALUE))
+                            .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 21, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnConfirmaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +145,7 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
                     .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirmaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -144,7 +154,7 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -174,6 +184,14 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_cbMedicoActionPerformed
+
+    private void cbEnfermeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEnfermeiraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbEnfermeiraActionPerformed
+
+    private void btnConfirmaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmaConsultaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConfirmaConsultaActionPerformed
 
     /**
      * @param args the command line arguments

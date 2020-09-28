@@ -9,6 +9,10 @@ public class Paciente extends Pessoa {
     private String cartaoDeAgendamento;
     private int cartaoDoSus;
 
+    public Paciente(String nome, int idade, long cpf, String email, String login, String senha, Endereco endereco) {
+        super(nome, idade, cpf, email, login, senha, endereco);
+    }
+
     public Paciente(String cartaoDeAgendamento, int cartaoDoSus, String nome, int idade, long cpf, String email, String login, String senha, Endereco endereco) {
         super(nome, idade, cpf, email, login, senha, endereco);
         this.cartaoDeAgendamento = cartaoDeAgendamento;
