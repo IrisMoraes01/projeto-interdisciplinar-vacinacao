@@ -125,13 +125,13 @@ public class TelaPrincipalPaciente extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
         TelaPrincipalPaciente.this.dispose();
-        new Login().show();
+        new Login().setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarConsultaActionPerformed
         // TODO add your handling code here:
         TelaPrincipalPaciente.this.dispose();
-        new AgendarConsultaPaciente().show();
+        new AgendarConsultaPaciente().setVisible(true);
     }//GEN-LAST:event_btnAgendarConsultaActionPerformed
 
     /**

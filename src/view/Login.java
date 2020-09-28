@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import service.VerificarLogin;
@@ -170,7 +165,7 @@ public class Login extends javax.swing.JFrame {
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         // TODO add your handling code here:
         Login.this.dispose();
-        new CadastroPaciente().show();
+        new CadastroPaciente().setVisible(true);
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
@@ -185,30 +180,27 @@ public class Login extends javax.swing.JFrame {
         if(rbPaciente.isSelected()){
             if(verificarLogin.fazerLoginPaciente(login, senha)){
                 Login.this.dispose();
-                new TelaPrincipalPaciente().show();
+                new TelaPrincipalPaciente().setVisible(true);
             }
         }else if(rbMedico.isSelected()){
             if(verificarLogin.fazerLoginMedico(login,senha)){
                 Login.this.dispose();
-                new TelaPrincipalMedico().show();
+                new TelaPrincipalMedico().setVisible(true);
             }
         }else if(rbEnfermeira.isSelected()){
             if(verificarLogin.fazerLoginEnfermeira(login,senha)){
                 Login.this.dispose();
-                new TelaPrincipalEnfermeira().show();  
+                new TelaPrincipalEnfermeira().setVisible(true);  
             }
         }else{
             if(verificarLogin.fazerLoginAdmin(login, senha)){ 
                 Login.this.dispose();
-                new TelaPrincipalAdmin().show();
+                new TelaPrincipalAdmin().setVisible(true);
             }
         }
         
     }//GEN-LAST:event_btnEntrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
