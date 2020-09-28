@@ -5,10 +5,9 @@
  */
 package view;
 
-import java.util.List;
-import javax.swing.JOptionPane;
-import model.Medico;
 import repository.ArmazenaMedico;
+
+import javax.swing.*;
 
 /**
  *
@@ -21,8 +20,8 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
      */
     public AgendarConsultaPaciente() {
         initComponents();
-        ArmazenaMedico armazenaMedico = new ArmazenaMedico();
-        this.cbMedico.addItem(ArmazenaMedico.getMedicos().toString());
+        ArmazenaMedico.getMedicos()
+                .forEach(medico -> this.cbMedico.addItem(medico.getNome()));
     }
 
     /**
