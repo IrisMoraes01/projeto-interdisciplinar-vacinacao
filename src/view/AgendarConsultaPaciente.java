@@ -17,10 +17,7 @@ import model.Enfermeira;
 import model.Medico;
 import model.Paciente;
 
-/**
- *
- * @author Cleide
- */
+
 public class AgendarConsultaPaciente extends javax.swing.JFrame {
 
     /**

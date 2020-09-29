@@ -5,7 +5,6 @@
  */
 package view;
 
-import repository.ArmazenaConsulta;
 
 public class ConsultasEnfermeira extends javax.swing.JFrame {
 

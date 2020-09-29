@@ -5,10 +5,6 @@
  */
 package view;
 
-/**
- *
- * @author Cleide
- */
 public class TelaPrincipalAdmin extends javax.swing.JFrame {
 
     /**
@@ -51,6 +47,11 @@ public class TelaPrincipalAdmin extends javax.swing.JFrame {
         });
 
         btnAdicionaMedico.setText("Adicionar Médico");
+        btnAdicionaMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionaMedicoActionPerformed(evt);
+            }
+        });
 
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +126,12 @@ public class TelaPrincipalAdmin extends javax.swing.JFrame {
         TelaPrincipalAdmin.this.dispose();
         new AdicionarEnfermeiraAdmin().setVisible(true);
     }//GEN-LAST:event_btnAdicionaEnfermeiraActionPerformed
+
+    private void btnAdicionaMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionaMedicoActionPerformed
+        // TODO add your handling code here:
+        TelaPrincipalAdmin.this.dispose();
+        new AdicionarMedicoAdmin().setVisible(true);
+    }//GEN-LAST:event_btnAdicionaMedicoActionPerformed
 
     /**
      * @param args the command line arguments
