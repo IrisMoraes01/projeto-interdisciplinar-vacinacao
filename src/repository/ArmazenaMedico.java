@@ -19,7 +19,7 @@ public class ArmazenaMedico {
                 true, 
                 "Rodrigo Lima", 
                 30, 
-                1344543459, 
+                1344543459L, 
                 "limarodrigo@hotmail.com", 
                 "limaRodrigo0", 
                 "01234", 

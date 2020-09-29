@@ -5,10 +5,7 @@
  */
 package view;
 
-/**
- *
- * @author Cleide
- */
+
 public class TelaPrincipalEnfermeira extends javax.swing.JFrame {
 
     /**

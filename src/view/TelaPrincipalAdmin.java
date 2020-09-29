@@ -44,6 +44,11 @@ public class TelaPrincipalAdmin extends javax.swing.JFrame {
         btnConsultaPaciente.setText("Consultar Pacientes");
 
         btnAdicionaEnfermeira.setText("Adicionar Enfermeira");
+        btnAdicionaEnfermeira.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionaEnfermeiraActionPerformed(evt);
+            }
+        });
 
         btnAdicionaMedico.setText("Adicionar Médico");
 
@@ -114,6 +119,12 @@ public class TelaPrincipalAdmin extends javax.swing.JFrame {
         TelaPrincipalAdmin.this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnAdicionaEnfermeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionaEnfermeiraActionPerformed
+        // TODO add your handling code here:
+        TelaPrincipalAdmin.this.dispose();
+        new AdicionarEnfermeiraAdmin().setVisible(true);
+    }//GEN-LAST:event_btnAdicionaEnfermeiraActionPerformed
 
     /**
      * @param args the command line arguments

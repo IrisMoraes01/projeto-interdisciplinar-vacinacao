@@ -8,7 +8,14 @@ package view;
 import repository.ArmazenaMedico;
 
 import javax.swing.*;
+import model.Consulta;
+import repository.ArmazenaConsulta;
 import repository.ArmazenaEnfermeira;
+import repository.ArmazenaPaciente;
+import model.Data;
+import model.Enfermeira;
+import model.Medico;
+import model.Paciente;
 
 /**
  *
@@ -22,9 +29,9 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
     public AgendarConsultaPaciente() {
         initComponents();
         ArmazenaEnfermeira.getEnfermeiras()
-                .forEach(enfermeira -> this.cbEnfermeira.addItem(enfermeira.getNome()+" "+enfermeira.getCoren()));
+                .forEach(enfermeira -> this.cbEnfermeira.addItem(enfermeira.getNome()+"-"+enfermeira.getCoren()));
         ArmazenaMedico.getMedicos()
-                .forEach(medico -> this.cbMedico.addItem(medico.getNome()+" "+medico.getCrm()));
+                .forEach(medico -> this.cbMedico.addItem(medico.getNome()+"-"+medico.getCrm()));
     }
 
     /**
@@ -49,6 +56,8 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
         cbMedico = new javax.swing.JComboBox<>();
         cbEnfermeira = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        txtCartaoDoSus = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,36 +103,40 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
 
         jLabel1.setText("Médico:");
 
+        jLabel6.setText("Cartão do Sus:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cbEnfermeira, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbMedico, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 21, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCartaoDoSus))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cbEnfermeira, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbMedico, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1)))
                     .addComponent(btnConfirmaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,28 +156,31 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
                     .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCartaoDoSus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirmaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -180,17 +196,33 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(cbMedico.getSelectedItem().equals("< Selecione o médico: >")){
             JOptionPane.showMessageDialog(null,"Selecione uma opção válida!");
-        } else{
-            
         }
     }//GEN-LAST:event_cbMedicoActionPerformed
 
     private void cbEnfermeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEnfermeiraActionPerformed
         // TODO add your handling code here:
+        if(cbEnfermeira.getSelectedItem().equals("< Selecione a enfermeira: >")){
+            JOptionPane.showMessageDialog(null,"Selecione uma opção válida!");
+        }
     }//GEN-LAST:event_cbEnfermeiraActionPerformed
 
     private void btnConfirmaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmaConsultaActionPerformed
         // TODO add your handling code here:
+        ArmazenaConsulta armazenaConsulta = new ArmazenaConsulta();
+        String dadosMedico = cbMedico.getSelectedItem().toString();
+        String dadosEnfermeira = cbEnfermeira.getSelectedItem().toString();
+        String[] separarMedico = dadosMedico.split("-");
+        String[] separaEnfermeira = dadosEnfermeira.split("-");
+        int crm = Integer.parseInt(separarMedico[1]);
+        int coren = Integer.parseInt(separaEnfermeira[1]);
+        Medico medico = ArmazenaMedico.getMedicoPorCRM(crm);
+        Enfermeira enfermeira = ArmazenaEnfermeira.getEnfermeiraPorCoren(coren);
+        Paciente paciente = ArmazenaPaciente.getPacientePorCartaoDoSus(Integer.parseInt(txtCartaoDoSus.getText()));
+        int dia = Integer.parseInt(txtDia.getText());
+        int mes = Integer.parseInt(txtMes.getText());
+        int ano = Integer.parseInt(txtAno.getText());
+        armazenaConsulta.adicionarConsulta(new Consulta(medico, enfermeira, paciente, new Data(dia, mes, ano)));
+        JOptionPane.showMessageDialog(null, "Consulta Confirmada!");
     }//GEN-LAST:event_btnConfirmaConsultaActionPerformed
 
     /**
@@ -237,8 +269,10 @@ public class AgendarConsultaPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtAno;
+    private javax.swing.JTextField txtCartaoDoSus;
     private javax.swing.JTextField txtDia;
     private javax.swing.JTextField txtMes;
     // End of variables declaration//GEN-END:variables
