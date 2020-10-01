@@ -5,6 +5,10 @@
  */
 package view;
 
+import model.Endereco;
+import model.Paciente;
+import repository.ArmazenaPaciente;
+
 public class CadastroPaciente extends javax.swing.JFrame {
 
     /**
@@ -418,7 +422,24 @@ public class CadastroPaciente extends javax.swing.JFrame {
         String estado = txtEstado.getText();
         String cep = txtCep.getText();
         
+        String cartaoDeAgendamento = "";
+        if(cbSarampo.isSelected()){
+            cartaoDeAgendamento += " Sarampo, ";
+        }else if(cbH1n1.isSelected()){
+            cartaoDeAgendamento += " H1N1, ";
+        }else if(cbMeningite.isSelected()){
+            cartaoDeAgendamento += " Meningite, ";
+        }else if(cbMalaria.isSelected()){
+            cartaoDeAgendamento += " Malária, ";
+        }else if(cbCovid19.isSelected()){
+            cartaoDeAgendamento += " Covid19, ";
+        }else if(cbOutrasVacinas.isSelected()){
+            cartaoDeAgendamento += " Outras Vacinas ";
+        }
+        
         int cartaoDoSus = Integer.parseInt(txtCartaoSus.getText());
+        ArmazenaPaciente armazenaPaciente = new ArmazenaPaciente();
+        armazenaPaciente.adicionarPaciente(new Paciente(cartaoDeAgendamento, cartaoDoSus, nome, ano, cpf, email, login, senha, new Endereco(logradouro,numero,nomeRua,bairro,cidade,estado,cep)));
         
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

@@ -14,7 +14,7 @@ public class ArmazenaPaciente {
     private static List<Paciente> pacientes = new ArrayList<>();
     
     static{
-        pacientes.add(new Paciente("", 
+        pacientes.add(new Paciente(" Sarampo,  Meningite,  Outras Vacinas ", 
                 123456, 
                 "Ivy Martins", 
                 22, 
