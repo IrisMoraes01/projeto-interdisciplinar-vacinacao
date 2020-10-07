@@ -5,14 +5,18 @@
  */
 package view;
 
+import model.Enfermeira;
+import repository.ArmazenaConsulta;
+
 
 public class ConsultasEnfermeira extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ConsultasEnfermeira
-     */
+    String dadosConsultaAtiva;
+    Enfermeira enfermeira = new Enfermeira();
     public ConsultasEnfermeira() {
-        initComponents();
+        initComponents(); 
+        ArmazenaConsulta.getConsultas()
+                .forEach(consulta -> this.cbConsultasEnfermeiraAtivas
+                        .addItem(consulta.getPaciente().getNome()+"-"+consulta.getPaciente().getIdade()));
     }
 
     /**
@@ -25,50 +29,15 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableConsultasEnfermeira = new javax.swing.JTable();
         btnVoltar = new javax.swing.JButton();
-        txtCoren = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        btnPesquisar = new javax.swing.JButton();
+        btnCalcular = new javax.swing.JButton();
+        cbConsultasEnfermeiraAtivas = new javax.swing.JComboBox<>();
+        txtMlsPaciente = new javax.swing.JTextField();
+        btnConfirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consultas Ativas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
-
-        tableConsultasEnfermeira.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Médico", "Cartão do Sus", "Data", "Mls aplicados"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tableConsultasEnfermeira.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tableConsultasEnfermeiraAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        jScrollPane1.setViewportView(tableConsultasEnfermeira);
 
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -77,12 +46,24 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Digite o seu coren:");
-
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
+                btnCalcularActionPerformed(evt);
+            }
+        });
+
+        cbConsultasEnfermeiraAtivas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "< Consultas ativas >" }));
+        cbConsultasEnfermeiraAtivas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbConsultasEnfermeiraAtivasActionPerformed(evt);
+            }
+        });
+
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
             }
         });
 
@@ -92,36 +73,28 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCoren, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPesquisar)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtMlsPaciente, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCalcular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbConsultasEnfermeiraAtivas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCoren, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnPesquisar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(cbConsultasEnfermeiraAtivas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btnCalcular)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtMlsPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnConfirmar)
+                .addGap(37, 37, 37)
                 .addComponent(btnVoltar)
-                .addGap(27, 27, 27))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,8 +103,8 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,16 +123,24 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
         new TelaPrincipalEnfermeira().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void tableConsultasEnfermeiraAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tableConsultasEnfermeiraAncestorAdded
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         // TODO add your handling code here:
+        dadosConsultaAtiva = cbConsultasEnfermeiraAtivas.getSelectedItem().toString();
+        String[] separarDados = dadosConsultaAtiva.split("-");
+        int dadosIdade = Integer.parseInt(separarDados[1]);
+        double mls = enfermeira.aplicarVacina(dadosIdade);
+        txtMlsPaciente.setText(String.valueOf(mls));
         
-    }//GEN-LAST:event_tableConsultasEnfermeiraAncestorAdded
+    }//GEN-LAST:event_btnCalcularActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+    private void cbConsultasEnfermeiraAtivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbConsultasEnfermeiraAtivasActionPerformed
+        // TODO add your handling code here:      
+    }//GEN-LAST:event_cbConsultasEnfermeiraAtivasActionPerformed
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
-        int coren = Integer.parseInt(txtCoren.getText());
-        
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+        // Não sei oq fazer
+    }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,12 +178,15 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cbConsultasEnfermeiraAtivas;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableConsultasEnfermeira;
-    private javax.swing.JTextField txtCoren;
+    private javax.swing.JTextField txtMlsPaciente;
     // End of variables declaration//GEN-END:variables
+
+    private Object Enfermeira() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

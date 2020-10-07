@@ -2,12 +2,13 @@ package view;
 
 import service.VerificarLogin;
 public class Login extends javax.swing.JFrame {
-
+    String login = null;
+    String senha = null;
     /**
      * Creates new form Login
      */
     public Login() {
-        initComponents();
+        initComponents(); 
     }
 
     
@@ -177,8 +178,8 @@ public class Login extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         VerificarLogin verificarLogin = new VerificarLogin();
-        String login = txtLogin.getText();
-        String senha = String.valueOf(txtSenha.getPassword());
+        login = txtLogin.getText();
+        senha = String.valueOf(txtSenha.getPassword());
         
         if(rbPaciente.isSelected()){
             if(verificarLogin.fazerLoginPaciente(login, senha)){

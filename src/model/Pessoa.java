@@ -23,6 +23,9 @@ abstract class Pessoa {
         this.senha = senha;
         this.endereco = endereco;
     }
+
+    public Pessoa() {
+    }
     
     public String getNome() {
         return nome;
