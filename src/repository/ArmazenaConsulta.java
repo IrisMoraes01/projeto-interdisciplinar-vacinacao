@@ -3,16 +3,10 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 import model.Consulta;
-import model.Data;
 
 public class ArmazenaConsulta {
     private static List<Consulta> consultas = new ArrayList<>();
     static{
-        consultas.add(new Consulta(ArmazenaMedico.getMedicoPorCRM(12345), 
-                ArmazenaEnfermeira.getEnfermeiraPorCoren(1234), 
-                ArmazenaPaciente.getPacientePorCartaoDoSus(123456),
-                ArmazenaVacina.getNomeDaVacina("Covid19"),
-                new Data(28, 12, 2001)));
     }
        
     

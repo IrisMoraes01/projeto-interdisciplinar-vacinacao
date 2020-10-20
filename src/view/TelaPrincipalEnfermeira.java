@@ -99,7 +99,6 @@ public class TelaPrincipalEnfermeira extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
-        // TODO add your handling code here:
         TelaPrincipalEnfermeira.this.dispose();
         new ConsultasEnfermeira().setVisible(true);
     }//GEN-LAST:event_btnConsultasActionPerformed

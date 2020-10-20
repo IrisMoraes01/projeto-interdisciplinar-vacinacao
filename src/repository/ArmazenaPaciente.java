@@ -39,6 +39,6 @@ public class ArmazenaPaciente {
     }
     public void alterarCartaoDeAgendamento(int cartaoSus, String doseVacina){
         Paciente paciente = ArmazenaPaciente.getPacientePorCartaoDoSus(cartaoSus);
-        paciente.setCartaoDeAgendamento(doseVacina);
+        paciente.setCartaoDeAgendamento(paciente.getCartaoDeAgendamento()+doseVacina);
     }
 }
