@@ -5,8 +5,10 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import model.Enfermeira;
 import repository.ArmazenaConsulta;
+import repository.ArmazenaPaciente;
 
 
 public class ConsultasEnfermeira extends javax.swing.JFrame {
@@ -16,8 +18,11 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
         initComponents(); 
         ArmazenaConsulta.getConsultas()
                 .forEach(consulta -> this.cbConsultasEnfermeiraAtivas
-                        .addItem(consulta.getPaciente().getNome()+"-"+consulta.getPaciente().getIdade()));
+                        .addItem(consulta.getPaciente().getNome()+"-"+consulta.getPaciente().getIdade()+"-"+consulta.getPaciente().getCartaoDoSus()));
     }
+    double mls;
+    int dadosIdade;
+    int dadosCartaoSus;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,6 +65,12 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
             }
         });
 
+        txtMlsPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMlsPacienteActionPerformed(evt);
+            }
+        });
+
         btnConfirmar.setText("Confirmar");
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,22 +90,22 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
                     .addComponent(cbConsultasEnfermeiraAtivas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(20, 20, 20)
                 .addComponent(cbConsultasEnfermeiraAtivas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCalcular)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(txtMlsPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirmar)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(btnVoltar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,8 +121,8 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -127,10 +138,11 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
         // TODO add your handling code here:
         dadosConsultaAtiva = cbConsultasEnfermeiraAtivas.getSelectedItem().toString();
         String[] separarDados = dadosConsultaAtiva.split("-");
-        int dadosIdade = Integer.parseInt(separarDados[1]);
-        double mls = enfermeira.aplicarVacina(dadosIdade);
-        txtMlsPaciente.setText(String.valueOf(mls));
+        dadosIdade = Integer.parseInt(separarDados[1]);
+        dadosCartaoSus = Integer.parseInt(separarDados[2]);
         
+        mls = enfermeira.aplicarVacina(dadosIdade, dadosCartaoSus);
+        txtMlsPaciente.setText(String.valueOf(mls));
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void cbConsultasEnfermeiraAtivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbConsultasEnfermeiraAtivasActionPerformed
@@ -139,8 +151,15 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
-        // Não sei oq fazer
+        ArmazenaPaciente armazenaPaciente = new ArmazenaPaciente();
+        armazenaPaciente.alterarCartaoDeAgendamento(dadosCartaoSus,String.valueOf(mls));
+        JOptionPane.showMessageDialog(null, "Consulta confirmada!");
     }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void txtMlsPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMlsPacienteActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtMlsPacienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,7 +205,4 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
     private javax.swing.JTextField txtMlsPaciente;
     // End of variables declaration//GEN-END:variables
 
-    private Object Enfermeira() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

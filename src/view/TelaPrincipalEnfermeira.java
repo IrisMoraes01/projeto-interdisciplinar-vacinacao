@@ -32,6 +32,11 @@ public class TelaPrincipalEnfermeira extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnConsultas.setText("Consultas");
+        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultasActionPerformed(evt);
+            }
+        });
 
         btnHistoricoConsultas.setText("Histórico de consultas");
 
@@ -92,6 +97,12 @@ public class TelaPrincipalEnfermeira extends javax.swing.JFrame {
         TelaPrincipalEnfermeira.this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
+        // TODO add your handling code here:
+        TelaPrincipalEnfermeira.this.dispose();
+        new ConsultasEnfermeira().setVisible(true);
+    }//GEN-LAST:event_btnConsultasActionPerformed
 
     /**
      * @param args the command line arguments

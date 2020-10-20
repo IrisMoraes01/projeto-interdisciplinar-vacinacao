@@ -21,6 +21,10 @@ public class Consulta {
         this.enfermeira = enfermeira;
         this.paciente = paciente;
         this.data = data;
+    }   
+
+    public Consulta(Medico medicoPorCRM, Enfermeira enfermeiraPorCoren, Paciente pacientePorCartaoDoSus, Vacina nomeDaVacina, Data data) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     public Medico getMedico() {
         return medico;

@@ -10,8 +10,9 @@ public class ArmazenaConsulta {
     static{
         consultas.add(new Consulta(ArmazenaMedico.getMedicoPorCRM(12345), 
                 ArmazenaEnfermeira.getEnfermeiraPorCoren(1234), 
-                ArmazenaPaciente.getPacientePorCartaoDoSus(123456), 
-                new Data(28, 12, 2021)));
+                ArmazenaPaciente.getPacientePorCartaoDoSus(123456),
+                ArmazenaVacina.getNomeDaVacina("Covid19"),
+                new Data(28, 12, 2001)));
     }
        
     

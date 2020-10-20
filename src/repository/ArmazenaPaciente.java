@@ -37,4 +37,8 @@ public class ArmazenaPaciente {
     public void adicionarPaciente(Paciente paciente){
         pacientes.add(paciente);
     }
+    public void alterarCartaoDeAgendamento(int cartaoSus, String doseVacina){
+        Paciente paciente = ArmazenaPaciente.getPacientePorCartaoDoSus(cartaoSus);
+        paciente.setCartaoDeAgendamento(doseVacina);
+    }
 }

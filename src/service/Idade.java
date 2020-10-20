@@ -5,14 +5,23 @@
  */
 package service;
 
-/**
- *
- * @author Cleide
- */
+import java.util.Calendar;
+
 public class Idade {
-    public static int calcularIdade(int dia, int mes, int ano){
-        int idade = 0;
+    public static int calcularIdade(int diaNasc, int mesNasc, int anoNasc){
+        int idade;
+        Calendar cal = Calendar.getInstance();
         
+        int diaAtual = cal.get(Calendar.DAY_OF_MONTH);
+        int mesAtual = cal.get(Calendar.MONTH);
+        int anoAtual = cal.get(Calendar.YEAR);
+        
+        int aC = anoAtual + 1900;
+        idade = aC - anoNasc;
+        
+        if (mesAtual < mesNasc &&  diaAtual < diaNasc ){
+           idade = idade - 1; 
+        }
         return idade;
     }
 }
