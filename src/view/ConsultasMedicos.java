@@ -6,6 +6,7 @@
 package view;
 
 import javax.swing.JOptionPane;
+import model.Medico;
 import repository.ArmazenaConsulta;
 import repository.ArmazenaPaciente;
 import repository.ArmazenaVacina;
@@ -107,6 +108,7 @@ public class ConsultasMedicos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -122,8 +124,8 @@ public class ConsultasMedicos extends javax.swing.JFrame {
         String[] separarDados = dadosConsultaAtiva.split("-");
         int dadosCartaoSus = Integer.parseInt(separarDados[2]);
         
-        ArmazenaPaciente armazenaPaciente = new ArmazenaPaciente();
-        armazenaPaciente.alterarCartaoDeAgendamento(dadosCartaoSus,String.valueOf(nomeVacina));
+        Medico medico = new Medico();
+        medico.prescreverVacina(dadosCartaoSus,String.valueOf(nomeVacina));
         JOptionPane.showMessageDialog(null, "Consulta confirmada!");
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

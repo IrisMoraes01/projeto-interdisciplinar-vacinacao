@@ -1,5 +1,6 @@
 package view;
 
+import javax.swing.JOptionPane;
 import service.VerificarLogin;
 public class Login extends javax.swing.JFrame {
     String login = null;
@@ -185,21 +186,29 @@ public class Login extends javax.swing.JFrame {
             if(verificarLogin.fazerLoginPaciente(login, senha)){
                 Login.this.dispose();
                 new TelaPrincipalPaciente().setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Login ou Senha não encontrados!");
             }
         }else if(rbMedico.isSelected()){
             if(verificarLogin.fazerLoginMedico(login,senha)){
                 Login.this.dispose();
                 new TelaPrincipalMedico().setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Login ou Senha não encontrados!");
             }
         }else if(rbEnfermeira.isSelected()){
             if(verificarLogin.fazerLoginEnfermeira(login,senha)){
                 Login.this.dispose();
                 new TelaPrincipalEnfermeira().setVisible(true);  
+            }else{
+                JOptionPane.showMessageDialog(null, "Login ou Senha não encontrados!");
             }
         }else{
             if(verificarLogin.fazerLoginAdmin(login, senha)){ 
                 Login.this.dispose();
                 new TelaPrincipalAdmin().setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Login ou Senha não encontrados!");
             }
         }
         

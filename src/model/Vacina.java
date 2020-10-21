@@ -11,7 +11,7 @@ public class Vacina {
     private double dose;
     private String indicacao;
     private Data dataValidade;
-
+    
     public Vacina(String nomeVacina, double dose, String indicacao, Data dataValidade) {
         this.nomeVacina = nomeVacina;
         this.dose = dose;

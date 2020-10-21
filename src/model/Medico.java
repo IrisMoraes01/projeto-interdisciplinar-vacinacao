@@ -5,6 +5,8 @@
  */
 package model;
 
+import repository.ArmazenaPaciente;
+
 
 public class Medico extends Pessoa {
     private int crm;
@@ -16,6 +18,10 @@ public class Medico extends Pessoa {
         this.crm = crm;
         this.especialidade = especialidade;
         this.residente = residente;
+    }
+
+    public Medico() {
+        
     }
 
     public int getCrm() {
@@ -40,5 +46,9 @@ public class Medico extends Pessoa {
 
     public void setResidente(boolean residente) {
         this.residente = residente;
+    }
+    public void prescreverVacina(int cartaoSus, String nomeVacina){
+        Paciente paciente = ArmazenaPaciente.getPacientePorCartaoDoSus(cartaoSus);
+        paciente.setCartaoDeAgendamento(nomeVacina);
     }
 }

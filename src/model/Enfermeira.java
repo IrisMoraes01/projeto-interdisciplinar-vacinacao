@@ -83,7 +83,7 @@ public class Enfermeira extends Pessoa{
                 }else if(idade>18){
                     ml = 0.85;
                 }   break;
-            case "Outra Vacina":
+            case "Outras Vacinas":
                 if(idade>=0 && idade <=2){
                     ml = 0.45;
                 }else if(idade>=3 && idade<=9){
@@ -97,5 +97,9 @@ public class Enfermeira extends Pessoa{
                 break;
         }
         return ml;
+    }
+    public void alterarCartaoDeAgendamento(int cartaoSus, String doseVacina){
+        Paciente paciente = ArmazenaPaciente.getPacientePorCartaoDoSus(cartaoSus);
+        paciente.setCartaoDeAgendamento(paciente.getCartaoDeAgendamento()+" - "+doseVacina);
     }
 }

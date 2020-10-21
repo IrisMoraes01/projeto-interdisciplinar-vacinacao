@@ -125,6 +125,7 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -149,8 +150,8 @@ public class ConsultasEnfermeira extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
-        ArmazenaPaciente armazenaPaciente = new ArmazenaPaciente();
-        armazenaPaciente.alterarCartaoDeAgendamento(dadosCartaoSus,String.valueOf(mls));
+        Enfermeira enfermeira = new Enfermeira();
+        enfermeira.alterarCartaoDeAgendamento(dadosCartaoSus,String.valueOf(mls));
         JOptionPane.showMessageDialog(null, "Consulta confirmada!");
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

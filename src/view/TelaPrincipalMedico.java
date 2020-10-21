@@ -42,6 +42,11 @@ public class TelaPrincipalMedico extends javax.swing.JFrame {
         });
 
         btnHistoricoConsultas.setText("Histórico de Consultas");
+        btnHistoricoConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoricoConsultasActionPerformed(evt);
+            }
+        });
 
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +98,7 @@ public class TelaPrincipalMedico extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -106,6 +112,12 @@ public class TelaPrincipalMedico extends javax.swing.JFrame {
         TelaPrincipalMedico.this.dispose();
         new ConsultasMedicos().setVisible(true);
     }//GEN-LAST:event_btnConsultasActionPerformed
+
+    private void btnHistoricoConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoricoConsultasActionPerformed
+        // TODO add your handling code here:
+        TelaPrincipalMedico.this.dispose();
+        new HistoricoConsultasMedico().setVisible(true);
+    }//GEN-LAST:event_btnHistoricoConsultasActionPerformed
 
     /**
      * @param args the command line arguments

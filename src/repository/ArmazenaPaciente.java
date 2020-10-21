@@ -14,7 +14,7 @@ public class ArmazenaPaciente {
     private static List<Paciente> pacientes = new ArrayList<>();
     
     static{
-        pacientes.add(new Paciente(" Sarampo,  Meningite,  Outras Vacinas ", 
+        pacientes.add(new Paciente("", 
                 123456, 
                 "Ivy Martins", 
                 22, 
@@ -36,9 +36,5 @@ public class ArmazenaPaciente {
     }
     public void adicionarPaciente(Paciente paciente){
         pacientes.add(paciente);
-    }
-    public void alterarCartaoDeAgendamento(int cartaoSus, String doseVacina){
-        Paciente paciente = ArmazenaPaciente.getPacientePorCartaoDoSus(cartaoSus);
-        paciente.setCartaoDeAgendamento(paciente.getCartaoDeAgendamento()+doseVacina);
     }
 }

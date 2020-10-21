@@ -34,10 +34,25 @@ public class TelaPrincipalAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnConsultaEnfermeira.setText("Consultar Enfermeira");
+        btnConsultaEnfermeira.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaEnfermeiraActionPerformed(evt);
+            }
+        });
 
         btnConsultaMedico.setText("Consultar Médico");
+        btnConsultaMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaMedicoActionPerformed(evt);
+            }
+        });
 
         btnConsultaPaciente.setText("Consultar Pacientes");
+        btnConsultaPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaPacienteActionPerformed(evt);
+            }
+        });
 
         btnAdicionaEnfermeira.setText("Adicionar Enfermeira");
         btnAdicionaEnfermeira.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +128,7 @@ public class TelaPrincipalAdmin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -132,6 +148,24 @@ public class TelaPrincipalAdmin extends javax.swing.JFrame {
         TelaPrincipalAdmin.this.dispose();
         new AdicionarMedicoAdmin().setVisible(true);
     }//GEN-LAST:event_btnAdicionaMedicoActionPerformed
+
+    private void btnConsultaEnfermeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaEnfermeiraActionPerformed
+        // TODO add your handling code here:
+        TelaPrincipalAdmin.this.dispose();
+        new ConsultarEnfermeiraAdmin().setVisible(true);
+    }//GEN-LAST:event_btnConsultaEnfermeiraActionPerformed
+
+    private void btnConsultaMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMedicoActionPerformed
+        // TODO add your handling code here:
+        TelaPrincipalAdmin.this.dispose();
+        new ConsultarMedicoAdmin().setVisible(true);
+    }//GEN-LAST:event_btnConsultaMedicoActionPerformed
+
+    private void btnConsultaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaPacienteActionPerformed
+        // TODO add your handling code here:
+        TelaPrincipalAdmin.this.dispose();
+        new ConsultarPacienteAdmin().setVisible(true);
+    }//GEN-LAST:event_btnConsultaPacienteActionPerformed
 
     /**
      * @param args the command line arguments
