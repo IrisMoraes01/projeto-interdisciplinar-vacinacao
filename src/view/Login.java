@@ -32,8 +32,9 @@ public class Login extends javax.swing.JFrame {
         rbEnfermeira = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Hospital");
-        setBackground(new java.awt.Color(255, 255, 255));
+        setTitle("Vacinação");
+        setBackground(new java.awt.Color(70, 116, 255));
+        setForeground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
         jLabel1.setText("Login:");
@@ -97,7 +98,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnEntrar))
@@ -106,7 +107,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Login - logo hospital.png"))); // NOI18N
+        Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/hospital.png"))); // NOI18N
 
         buttonGroup1.add(rbPaciente);
         rbPaciente.setText("Paciente");
@@ -157,6 +158,8 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        getAccessibleContext().setAccessibleName("Vacinação");
 
         pack();
         setLocationRelativeTo(null);

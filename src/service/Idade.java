@@ -16,8 +16,7 @@ public class Idade {
         int mesAtual = cal.get(Calendar.MONTH);
         int anoAtual = cal.get(Calendar.YEAR);
         
-        int aC = anoAtual + 1900;
-        idade = aC - anoNasc;
+        idade = anoAtual - anoNasc;
         
         if (mesAtual < mesNasc &&  diaAtual < diaNasc ){
            idade = idade - 1; 

@@ -23,6 +23,7 @@ public class HistoricoConsultasEnfermeira extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vacinação - Enfermeira");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Histórico de Consultas Enfermeira", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
@@ -97,6 +98,8 @@ public class HistoricoConsultasEnfermeira extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        getAccessibleContext().setAccessibleName("Vacinação - Enfermeira");
 
         pack();
         setLocationRelativeTo(null);

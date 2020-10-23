@@ -34,6 +34,7 @@ public class TelaPrincipalPaciente extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vacinação - Paciente");
 
         btnAgendarConsulta.setText("Agendar Consulta");
         btnAgendarConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +109,8 @@ public class TelaPrincipalPaciente extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        getAccessibleContext().setAccessibleName("Vacinação - Paciente");
 
         pack();
         setLocationRelativeTo(null);
