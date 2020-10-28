@@ -40,6 +40,11 @@ public class TelaPrincipalEnfermeira extends javax.swing.JFrame {
         });
 
         btnHistoricoConsultas.setText("Histórico de consultas");
+        btnHistoricoConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoricoConsultasActionPerformed(evt);
+            }
+        });
 
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +95,6 @@ public class TelaPrincipalEnfermeira extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getAccessibleContext().setAccessibleName("Vacinação - Enfermeira");
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
@@ -107,6 +111,12 @@ public class TelaPrincipalEnfermeira extends javax.swing.JFrame {
         TelaPrincipalEnfermeira.this.dispose();
         new ConsultasEnfermeira().setVisible(true);
     }//GEN-LAST:event_btnConsultasActionPerformed
+
+    private void btnHistoricoConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoricoConsultasActionPerformed
+        // TODO add your handling code here:
+        TelaPrincipalEnfermeira.this.dispose();
+        new HistoricoConsultasEnfermeira().setVisible(true);
+    }//GEN-LAST:event_btnHistoricoConsultasActionPerformed
 
     /**
      * @param args the command line arguments

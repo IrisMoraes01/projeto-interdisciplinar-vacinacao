@@ -5,9 +5,6 @@ import service.VerificarLogin;
 public class Login extends javax.swing.JFrame {
     String login = null;
     String senha = null;
-    /**
-     * Creates new form Login
-     */
     public Login() {
         initComponents(); 
     }

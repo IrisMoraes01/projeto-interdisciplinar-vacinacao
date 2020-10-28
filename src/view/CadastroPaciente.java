@@ -5,9 +5,11 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import model.Endereco;
 import model.Paciente;
 import repository.ArmazenaPaciente;
+import service.Idade;
 
 public class CadastroPaciente extends javax.swing.JFrame {
 
@@ -364,6 +366,8 @@ public class CadastroPaciente extends javax.swing.JFrame {
         int dia = Integer.parseInt(txtDia.getText());
         int mes = Integer.parseInt(txtMes.getText());
         int ano = Integer.parseInt(txtAno.getText());
+        int idade = Idade.calcularIdade(dia, mes, ano);
+        
         long cpf = Long.parseLong(txtCpf.getText());
         String email = txtEmail.getText();
         String login = txtLogin.getText();
@@ -380,9 +384,10 @@ public class CadastroPaciente extends javax.swing.JFrame {
         String cartaoDeAgendamento = "";
        
         int cartaoDoSus = Integer.parseInt(txtCartaoSus.getText());
-        ArmazenaPaciente armazenaPaciente = new ArmazenaPaciente();
-        armazenaPaciente.adicionarPaciente(new Paciente(cartaoDeAgendamento, cartaoDoSus, nome, ano, cpf, email, login, senha, new Endereco(logradouro,numero,nomeRua,bairro,cidade,estado,cep)));
         
+        ArmazenaPaciente armazenaPaciente = new ArmazenaPaciente();
+        armazenaPaciente.adicionarPaciente(new Paciente(cartaoDeAgendamento, cartaoDoSus, nome, idade, cpf, email, login, senha, new Endereco(logradouro,numero,nomeRua,bairro,cidade,estado,cep)));
+        JOptionPane.showMessageDialog(null, "Cadastro confirmado!");
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
