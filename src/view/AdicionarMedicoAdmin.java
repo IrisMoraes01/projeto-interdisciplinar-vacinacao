@@ -329,7 +329,7 @@ public class AdicionarMedicoAdmin extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         AdicionarMedicoAdmin.this.dispose();
-        new Login().setVisible(true);
+        new TelaPrincipalAdmin().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void txtConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarActionPerformed
